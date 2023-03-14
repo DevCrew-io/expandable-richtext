@@ -38,7 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   expandable_rich_text:
-    path: /Users/minhajnadeem/Projects/DevCrew/Flutter/ExpandableRichTextPackage/expandable_rich_text
+    path: /Users/minhajnadeem/Projects/DevCrew/Flutter/ExpandableRichTextPackage/expandable-richtext
 
 dev_dependencies:
   flutter_test:

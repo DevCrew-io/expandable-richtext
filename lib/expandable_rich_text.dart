@@ -17,13 +17,10 @@ class ExpandableRichText extends StatefulWidget {
     this.collapseText,
     this.expanded = false,
     this.onExpandedChanged,
-    this.onLinkTap,
-    this.linkColor,
-    this.linkEllipsis = true,
-    this.linkStyle,
-    this.prefixText,
-    this.prefixStyle,
-    this.onPrefixTap,
+    this.onToggleTextTap,
+    this.toggleTextColor,
+    this.showEllipsis = true,
+    this.toggleTextStyle,
     this.urlStyle,
     this.onUrlTap,
     this.hashtagStyle,
@@ -43,42 +40,60 @@ class ExpandableRichText extends StatefulWidget {
     this.animation = false,
     this.animationDuration,
     this.animationCurve,
-    this.semanticsLabel,
   }) : super(key: key);
 
   final String text;
+
+  /// text to show to expand text e.g 'see more'
   final String? expandText;
+
+  /// text to show to collapse text e.g 'see less'
   final String? collapseText;
+
+  /// control text toggle
   final bool expanded;
+
+  /// listen for text collapse and expand event
   final ValueChanged<bool>? onExpandedChanged;
-  final VoidCallback? onLinkTap;
-  final Color? linkColor;
-  final bool linkEllipsis;
-  final TextStyle? linkStyle;
-  final String? prefixText;
-  final TextStyle? prefixStyle;
-  final VoidCallback? onPrefixTap;
+
+  /// listen for click on toggle text(expandText/collapseText)
+  final VoidCallback? onToggleTextTap;
+  final Color? toggleTextColor;
+
+  ///control show '...' with toggle text
+  final bool showEllipsis;
+  final TextStyle? toggleTextStyle;
   final TextStyle? urlStyle;
   final StringCallback? onUrlTap;
   final TextStyle? hashtagStyle;
   final StringCallback? onHashtagTap;
   final TextStyle? mentionStyle;
   final StringCallback? onMentionTap;
-  final TextStyle? customTagStyle; //single style to apply on all custom tags
-  final Map<String, TextStyle>?
-      customTagStyles; //multiple styles for multiple custom tags
+
+  /// single style to apply on all custom tags
+  final TextStyle? customTagStyle;
+
+  ///multiple styles to apply on multiple custom tags
+  final Map<String, TextStyle>? customTagStyles;
   final StringCallback? onCustomTagTap;
+
+  /// control to expand text on tap on whole text
   final bool expandOnTextTap;
+
+  /// control to collapse text on tap on whole text
   final bool collapseOnTextTap;
+
+  /// default text style
   final TextStyle? style;
   final TextDirection? textDirection;
   final TextAlign? textAlign;
   final double? textScaleFactor;
   final int maxLines;
+
+  /// expand and collapse animation
   final bool animation;
   final Duration? animationDuration;
   final Curve? animationCurve;
-  final String? semanticsLabel;
 
   @override
   State<ExpandableRichText> createState() => _ExpandableRichTextState();
@@ -86,27 +101,27 @@ class ExpandableRichText extends StatefulWidget {
 
 class _ExpandableRichTextState extends State<ExpandableRichText> {
   bool _expanded = false;
-  late TapGestureRecognizer _linkTapGestureRecognizer;
+  late TapGestureRecognizer _toggleTextGestureRecognizer;
   List<TextSegment> _textSegments = [];
   final List<TapGestureRecognizer> _textSegmentsTapGestureRecognizers = [];
-  late DefaultTextStyle defaultTextStyle;
   late TextStyle effectiveTextStyle;
 
   @override
   void initState() {
     super.initState();
     _expanded = widget.expanded;
-    _linkTapGestureRecognizer = TapGestureRecognizer()..onTap = _linkTapped;
+    _toggleTextGestureRecognizer = TapGestureRecognizer()
+      ..onTap = _onTapToggleText;
     _updateText();
   }
 
   @override
   Widget build(BuildContext context) {
-    defaultTextStyle = DefaultTextStyle.of(context);
+    final defaultTextStyle = DefaultTextStyle.of(context);
     effectiveTextStyle = widget.style ?? defaultTextStyle.style;
 
     if (widget.expandText == null) {
-      //simple text without expand and collapse
+      ///simple text without expand and collapse
       return RichText(text: _contentTextSpan());
     } else {
       final toggleTextSpan = _toggleTextSpan();
@@ -149,7 +164,7 @@ class _ExpandableRichTextState extends State<ExpandableRichText> {
           final endOffset = (textPainter.getOffsetBefore(position.offset) ?? 0);
           final recognizer =
               (_expanded ? widget.collapseOnTextTap : widget.expandOnTextTap)
-                  ? _linkTapGestureRecognizer
+                  ? _toggleTextGestureRecognizer
                   : null;
           final text = _expanded
               ? contentTextSpan
@@ -201,22 +216,24 @@ class _ExpandableRichTextState extends State<ExpandableRichText> {
   @override
   void dispose() {
     super.dispose();
-    _linkTapGestureRecognizer.dispose();
+    _toggleTextGestureRecognizer.dispose();
     for (var recognizer in _textSegmentsTapGestureRecognizers) {
       recognizer.dispose();
     }
   }
 
-  void _linkTapped() {
-    if (widget.onLinkTap != null) {
-      widget.onLinkTap!();
+  void _onTapToggleText() {
+    if (widget.onToggleTextTap != null) {
+      widget.onToggleTextTap!();
       return;
     }
+    toggleText();
+  }
 
+  /// change the state of [_expanded] to show/hide text
+  void toggleText() {
     final toggledExpanded = !_expanded;
-
     setState(() => _expanded = toggledExpanded);
-
     widget.onExpandedChanged?.call(toggledExpanded);
   }
 
@@ -234,18 +251,16 @@ class _ExpandableRichTextState extends State<ExpandableRichText> {
   TextSpan _toggleTextSpan() {
     final linkText =
         (_expanded ? widget.collapseText : widget.expandText) ?? '';
-    final linkColor = widget.linkColor ??
-        widget.linkStyle?.color ??
-        defaultTextStyle.style.color;
-    final linkTextStyle = effectiveTextStyle.merge(widget.linkStyle);
+    final linkTextStyle = effectiveTextStyle.merge(widget.toggleTextStyle);
 
     return TextSpan(
       children: [
         if (!_expanded)
           TextSpan(
             text: '\u2026 ',
-            style: widget.linkEllipsis ? linkTextStyle : effectiveTextStyle,
-            recognizer: widget.linkEllipsis ? _linkTapGestureRecognizer : null,
+            style: widget.showEllipsis ? linkTextStyle : effectiveTextStyle,
+            recognizer:
+                widget.showEllipsis ? _toggleTextGestureRecognizer : null,
           ),
         if (linkText.isNotEmpty)
           TextSpan(
@@ -258,7 +273,7 @@ class _ExpandableRichTextState extends State<ExpandableRichText> {
               TextSpan(
                 text: linkText,
                 style: linkTextStyle,
-                recognizer: _linkTapGestureRecognizer,
+                recognizer: _toggleTextGestureRecognizer,
               ),
             ],
           ),

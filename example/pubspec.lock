@@ -46,7 +46,7 @@ packages:
   expandable_rich_text:
     dependency: "direct main"
     description:
-      path: "/Users/minhajnadeem/Projects/DevCrew/Flutter/ExpandableRichTextPackage/expandable_rich_text"
+      path: "/Users/minhajnadeem/Projects/DevCrew/Flutter/ExpandableRichTextPackage/expandable-richtext"
       relative: false
     source: path
     version: "0.0.1"

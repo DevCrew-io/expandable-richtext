@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 plainText, //assume this comes from backend
                 expandText: expandingText,
                 collapseText: collapsingText,
-                linkStyle: linkTextStyle,
+                toggleTextStyle: linkTextStyle,
               ),
               verticalMargin,
               mentionTextTitle,
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 mentionText, //assume this comes from backend
                 expandText: expandingText,
                 collapseText: collapsingText,
-                linkStyle: linkTextStyle,
+                toggleTextStyle: linkTextStyle,
                 mentionStyle: mentionTextStyle,
               ),
               verticalMargin,
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 hashTagText, //assume this comes from backend
                 expandText: expandingText,
                 collapseText: collapsingText,
-                linkStyle: linkTextStyle,
+                toggleTextStyle: linkTextStyle,
                 hashtagStyle: hashTagTextStyle,
               ),
               verticalMargin,
@@ -141,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 urlText, //assume this comes from backend
                 expandText: expandingText,
                 collapseText: collapsingText,
-                linkStyle: linkTextStyle,
+                toggleTextStyle: linkTextStyle,
                 urlStyle: urlTextStyle,
               ),
               verticalMargin,
@@ -151,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 tagsText, //assume this comes from backend
                 expandText: expandingText,
                 collapseText: collapsingText,
-                linkStyle: linkTextStyle,
+                toggleTextStyle: linkTextStyle,
                 customTagStyle: customTagStyle,
               ),
               verticalMargin,
@@ -161,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 tagsText, //assume this comes from backend
                 expandText: expandingText,
                 collapseText: collapsingText,
-                linkStyle: linkTextStyle,
+                toggleTextStyle: linkTextStyle,
                 customTagStyles: customTagStyleMap,
               ),
               verticalMargin,
@@ -171,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 allText, //assume this comes from backend
                 expandText: expandingText,
                 collapseText: collapsingText,
-                linkStyle: linkTextStyle,
+                toggleTextStyle: linkTextStyle,
                 mentionStyle: mentionTextStyle,
                 hashtagStyle: hashTagTextStyle,
                 customTagStyle: customTagStyle,

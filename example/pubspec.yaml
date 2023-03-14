@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+#todo: update path after publishing package
   expandable_rich_text:
     path: /Users/minhajnadeem/Projects/DevCrew/Flutter/ExpandableRichTextPackage/expandable-richtext
 

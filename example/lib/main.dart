@@ -91,18 +91,30 @@ class _MyHomePageState extends State<MyHomePage> {
       style: titleTextStyle,
     );
 
+    //programmatically handle text toggle
+    Text programmaticallyHandleTitle = Text(
+      titleProgrammaticallyHandle,
+      style: titleTextStyle,
+    );
+    /// a text to collapse and expand programmatically
+    final programmaticExpandableRichText = ExpandableRichText(
+      plainText,
+      expandText: expandingText,
+      collapseText: collapsingText,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Padding(
           padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
+            shrinkWrap: true,
             children: [
               simpleTextTitle,
               titleMargin,
-              const ExpandableRichText(
+              ExpandableRichText(
                 plainText, //assume this comes from backend
               ),
               verticalMargin,
@@ -177,6 +189,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 customTagStyle: customTagStyle,
               ),
               verticalMargin,
+              Row(
+                children: [
+                  programmaticallyHandleTitle,
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                      onPressed: () =>
+                          {programmaticExpandableRichText.onToggleText?.call()},
+                      child: const Text("Toggle"))
+                ],
+              ),
+              titleMargin,
+              programmaticExpandableRichText
             ],
           )),
     );

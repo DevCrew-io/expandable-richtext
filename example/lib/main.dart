@@ -197,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   ElevatedButton(
                       onPressed: () =>
-                          {programmaticExpandableRichText.onToggleText?.call()},
+                          {programmaticExpandableRichText.toggle?.call()},
                       child: const Text("Toggle"))
                 ],
               ),

@@ -96,7 +96,7 @@ class ExpandableRichText extends StatefulWidget {
   final Curve? animationCurve;
 
   /// listen to call widget function [_toggleText] if programmatically want to toggle text
-  late VoidCallback? onToggleText;
+  late VoidCallback? toggle;
 
   @override
   State<ExpandableRichText> createState() => _ExpandableRichTextState();
@@ -120,7 +120,7 @@ class _ExpandableRichTextState extends State<ExpandableRichText> {
 
   @override
   Widget build(BuildContext context) {
-    widget.onToggleText = _toggleText;
+    widget.toggle = _toggleText;
     final defaultTextStyle = DefaultTextStyle.of(context);
     effectiveTextStyle = widget.style ?? defaultTextStyle.style;
 

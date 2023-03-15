@@ -10,7 +10,7 @@ import 'package:expandable_rich_text/text_segment.dart';
 typedef StringCallback = void Function(String value);
 
 class ExpandableRichText extends StatefulWidget {
-  const ExpandableRichText(
+  ExpandableRichText(
     this.text, {
     Key? key,
     this.expandText,
@@ -57,7 +57,7 @@ class ExpandableRichText extends StatefulWidget {
   final ValueChanged<bool>? onExpandedChanged;
 
   /// listen for click on toggle text(expandText/collapseText)
-  final VoidCallback? onToggleTextTap;
+  VoidCallback? onToggleTextTap;
   final Color? toggleTextColor;
 
   ///control show '...' with toggle text
@@ -95,6 +95,9 @@ class ExpandableRichText extends StatefulWidget {
   final Duration? animationDuration;
   final Curve? animationCurve;
 
+  /// listen to call widget function [_toggleText] if programmatically want to toggle text
+  late VoidCallback? toggle;
+
   @override
   State<ExpandableRichText> createState() => _ExpandableRichTextState();
 }
@@ -117,6 +120,7 @@ class _ExpandableRichTextState extends State<ExpandableRichText> {
 
   @override
   Widget build(BuildContext context) {
+    widget.toggle = _toggleText;
     final defaultTextStyle = DefaultTextStyle.of(context);
     effectiveTextStyle = widget.style ?? defaultTextStyle.style;
 
@@ -227,11 +231,11 @@ class _ExpandableRichTextState extends State<ExpandableRichText> {
       widget.onToggleTextTap!();
       return;
     }
-    toggleText();
+    _toggleText();
   }
 
   /// change the state of [_expanded] to show/hide text
-  void toggleText() {
+  void _toggleText() {
     final toggledExpanded = !_expanded;
     setState(() => _expanded = toggledExpanded);
     widget.onExpandedChanged?.call(toggledExpanded);

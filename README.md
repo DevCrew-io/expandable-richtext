@@ -1,6 +1,6 @@
 # Expandable Rich Text
 
-[![pub package](https://img.shields.io/pub/v/expandable_text.svg)](https://pub.dev/packages/expandable_rich_text)
+[![pub package](https://img.shields.io/pub/v/expandable_rich_text.svg)](https://pub.dev/packages/expandable_rich_text)
 [![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/DevCrew-io/expandable-richtext/blob/main/LICENSE)
 A text widget which you can use to initially only show a defined number of lines of a probably long text. it also support clickable @‌mention, #hashtag and hyperlinks. You can define styles for @‌mention, #hashtag and hyperlinks, also apply custom style on segments of text.
 
@@ -15,7 +15,7 @@ A text widget which you can use to initially only show a defined number of lines
 - Handle click on @‌mention, #hashtag, hyperlinks and text segments
 - Programmatically
 
-![Example with maxLines=1](https://user-images.githubusercontent.com/85495993/225625733-94bb2350-1def-4c1f-8f33-c2f8ea0b0748.gif)
+![Example with maxLines=1](https://user-images.githubusercontent.com/85495993/225886368-8b2f9130-3af3-411c-8a21-e817c1a92873.gif)
 
 ## Getting started
 

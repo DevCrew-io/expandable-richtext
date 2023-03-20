@@ -5,7 +5,7 @@
 ![](https://img.shields.io/badge/Code-Dart-informational?style=flat&logo=dart&color=29B1EE)
 ![](https://img.shields.io/badge/Code-Flutter-informational?style=flat&logo=flutter&color=0C459C)
 
-an example app for `expandable_rich_text` package
+an example app for `expandable_richtext` package
 
 ### Usage
 

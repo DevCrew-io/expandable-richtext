@@ -134,13 +134,13 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "expandable_rich_text",
+      "name": "expandable_richtext",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-03-14T09:51:58.980597Z",
+  "generated": "2023-03-20T11:36:40.625909Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }

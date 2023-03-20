@@ -1,4 +1,4 @@
-import 'package:expandable_rich_text/text_segment.dart';
+import 'package:expandable_richtext/text_segment.dart';
 
 List<TextSegment> parseText(String? text) {
   final segments = <TextSegment>[];

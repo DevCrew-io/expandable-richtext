@@ -1,4 +1,4 @@
-# Expandable Rich Text
+# Expandable RichText
 
 [![pub package](https://img.shields.io/pub/v/expandable_rich_text.svg)](https://pub.dev/packages/expandable_rich_text)
 [![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/DevCrew-io/expandable-richtext/blob/main/LICENSE)
@@ -28,13 +28,13 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  expandable_rich_text: 1.0.0
+  expandable_richtext: 1.0.0
 ```
 
 Next, import the package into your dart code:
 
 ```dart
-import 'package:expandable_rich_text/expandable_rich_text.dart';
+import 'package:expandable_rich_text/expandable_richtext.dart';
 ```
 
 ### Usage

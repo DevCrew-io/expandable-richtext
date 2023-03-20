@@ -8,7 +8,7 @@ List<TextSegment> parseText(String? text) {
   }
 
   RegExp exp = RegExp(
-      r'(?<keyword>(#|@)([\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]+)|(?<url>(?:(?:https?|ftp):\/\/)?[-a-z0-9@:%._\+~#=]{1,256}\.[a-z0-9]{1,6}(\/[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)?)|(?<tag>(<\w+>[^<]*<\/\w+>+)))',
+      r'(?<keyword>(#|@)([\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]+)|(?<url>(?:(?:https?|ftp):\/\/)?[-a-z0-9@:%._\+~#=]{1,256}\.[a-z0-9]{1,6}(\/[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)?)|(?<tag>(<\w+>[^<]*[<\/\w+>?]+)))',
       unicode: true);
   final matches = exp.allMatches(text);
   var start = 0;
@@ -43,9 +43,9 @@ List<TextSegment> parseText(String? text) {
       String? tagName;
       if (isTag) {
         final regexStart = RegExp(r"<\w+>");
-        final regexEnd = RegExp(r"<\/\w+>");
+        final regexEnd = RegExp(r"<\/*\w*>*");
         final match = regexStart.firstMatch(keyword);
-        tagName = keyword.substring(match!.start + 1, match!.end - 1);
+        tagName = keyword.substring(match!.start + 1, match.end - 1);
         subString = keyword.replaceAll(regexStart, "");
         subString = subString.replaceAll(regexEnd, "");
       } else {

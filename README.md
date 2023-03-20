@@ -2,6 +2,9 @@
 
 [![pub package](https://img.shields.io/pub/v/expandable_rich_text.svg)](https://pub.dev/packages/expandable_rich_text)
 [![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/DevCrew-io/expandable-richtext/blob/main/LICENSE)
+![](https://img.shields.io/badge/Code-Dart-informational?style=flat&logo=dart&color=29B1EE)
+![](https://img.shields.io/badge/Code-Flutter-informational?style=flat&logo=flutter&color=0C459C)
+
 A text widget which you can use to initially only show a defined number of lines of a probably long
 text. it also support clickable @‌mention, #hashtag and hyperlinks. You can define styles for
 @‌mention, #hashtag and hyperlinks, also apply custom style on segments of text.

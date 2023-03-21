@@ -18,7 +18,7 @@ text. It also supports clickable @‌mention, #hashtag, and hyperlinks. You can 
 - Callback for expanded changed event (`onExpandedChanged`)
 - Apply different style at @‌mention, #hashtag, hyperlinks and text segments
 - Handle click on @‌mention, #hashtag, hyperlinks and text segments
-- Programmatically
+- Programmatically expand and collapse text
 
 ![Example with maxLines=1](https://user-images.githubusercontent.com/85495993/225886368-8b2f9130-3af3-411c-8a21-e817c1a92873.gif)
 
@@ -44,7 +44,7 @@ If `longText` exceeds two lines:
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-    longText,
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     expandText: 'show more',
     collapseText: 'show less',
     maxLines: 2,
@@ -58,7 +58,7 @@ If `longText` have @‌mention, #hashtag, hyperlinks and text segments:
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-      longText,
+      text: "Lorem ipsum dolor sit amet..., #consetetur @sadipscing elitr, <tag1>I am Admin1</tag1> tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <tag2>I am employee1</tag2> At vero eos et accusam et justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum www.galley.com dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, <tag1>I am Admin2</tag1> diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. <tag2>I am employee2</tag2> Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       expandText: 'show more',
       collapseText: 'show less',
       maxLines: 1,
@@ -84,20 +84,28 @@ Widget build(BuildContext context) {
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-    allText, //assume this comes from backend
-    expandText: expandingText,
-    collapseText: collapsingText,
+    text: "Lorem ipsum dolor sit amet..., #consetetur @sadipscing elitr, <tag1>I am Admin1</tag1> tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <tag2>I am employee1</tag2> At vero eos et accusam et justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum www.galley.com dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, <tag1>I am Admin2</tag1> diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. <tag2>I am employee2</tag2> Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    expandText: 'show more',
+    collapseText: 'show less',
     expanded: false,
     onExpandedChanged: (flag) => {},
     toggleTextColor: Colors.black,
     showEllipsis: true,
-    toggleTextStyle: linkTextStyle,
-    urlStyle: urlTextStyle,
+    toggleTextStyle: const TextStyle(
+        fontSize: 12, color: Colors.blue, decoration: TextDecoration.underline),
+    urlStyle: const TextStyle(color: Colors.lightBlueAccent, decoration: TextDecoration.underline),
     onUrlTap: (url) => {},
-    hashtagStyle: hashTagTextStyle,
-    mentionStyle: mentionTextStyle,
+    hashtagStyle: const TextStyle(
+        fontSize: 16, color: Colors.white, backgroundColor: Colors.black87),
+    mentionStyle: const TextStyle(
+        color: Colors.blueAccent, fontSize: 16, fontWeight: FontWeight.bold),
     onMentionTap: (mention) => {},
-    customTagStyle: customTagStyle,
+    customTagStyle: const TextStyle(fontWeight: FontWeight.bold,
+        fontStyle: FontStyle.italic,
+        fontSize: 16,
+        color: Colors.white,
+        backgroundColor: Colors.lightBlueAccent,
+        decoration: TextDecoration.underline),
     onCustomTagTap: (tag) => {},
     expandOnTextTap: true,
     collapseOnTextTap: true,
@@ -141,5 +149,5 @@ Give a start if this project helped you.
 
 ## Copyright & License
 
-Code copyright 2023–2024 DevCrew I/O. Code released under
+Code copyright 2023 DevCrew I/O. Code released under
 the [MIT license](https://github.com/DevCrew-io/expandable-richtext/blob/main/LICENSE).

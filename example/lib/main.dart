@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
       titleProgrammaticallyHandle,
       style: titleTextStyle,
     );
+
     /// a text to collapse and expand programmatically
     final programmaticExpandableRichText = ExpandableRichText(
       plainText,
@@ -107,104 +108,100 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              simpleTextTitle,
-              titleMargin,
-              ExpandableRichText(
-                plainText, //assume this comes from backend
-              ),
-              verticalMargin,
-              simpleExpandableTextTitle,
-              titleMargin,
-              ExpandableRichText(
-                plainText, //assume this comes from backend
-                expandText: expandingText,
-                collapseText: collapsingText,
-                toggleTextStyle: linkTextStyle,
-              ),
-              verticalMargin,
-              mentionTextTitle,
-              titleMargin,
-              ExpandableRichText(
-                mentionText, //assume this comes from backend
-                expandText: expandingText,
-                collapseText: collapsingText,
-                toggleTextStyle: linkTextStyle,
-                mentionStyle: mentionTextStyle,
-              ),
-              verticalMargin,
-              hashtagTextTitle,
-              titleMargin,
-              ExpandableRichText(
-                hashTagText, //assume this comes from backend
-                expandText: expandingText,
-                collapseText: collapsingText,
-                toggleTextStyle: linkTextStyle,
-                hashtagStyle: hashTagTextStyle,
-              ),
-              verticalMargin,
-              urlTextTitle,
-              titleMargin,
-              ExpandableRichText(
-                urlText, //assume this comes from backend
-                expandText: expandingText,
-                collapseText: collapsingText,
-                toggleTextStyle: linkTextStyle,
-                urlStyle: urlTextStyle,
-              ),
-              verticalMargin,
-              customTagTitle,
-              titleMargin,
-              ExpandableRichText(
-                tagsText, //assume this comes from backend
-                expandText: expandingText,
-                collapseText: collapsingText,
-                toggleTextStyle: linkTextStyle,
-                customTagStyle: customTagStyle,
-              ),
-              verticalMargin,
-              multiCustomTagTitle,
-              titleMargin,
-              ExpandableRichText(
-                tagsText, //assume this comes from backend
-                expandText: expandingText,
-                collapseText: collapsingText,
-                toggleTextStyle: linkTextStyle,
-                customTagStyles: customTagStyleMap,
-              ),
-              verticalMargin,
-              allTextTitle,
-              titleMargin,
-              ExpandableRichText(
-                allText, //assume this comes from backend
-                expandText: expandingText,
-                collapseText: collapsingText,
-                toggleTextStyle: linkTextStyle,
-                mentionStyle: mentionTextStyle,
-                hashtagStyle: hashTagTextStyle,
-                customTagStyle: customTagStyle,
-              ),
-              verticalMargin,
-              Row(
-                children: [
-                  programmaticallyHandleTitle,
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  ElevatedButton(
-                      onPressed: () =>
-                          {programmaticExpandableRichText.toggle?.call()},
-                      child: const Text("Toggle"))
-                ],
-              ),
-              titleMargin,
-              programmaticExpandableRichText
-            ],
-          )),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        shrinkWrap: true,
+        children: [
+          simpleTextTitle,
+          titleMargin,
+          ExpandableRichText(
+            plainText, //assume this comes from backend
+          ),
+          verticalMargin,
+          simpleExpandableTextTitle,
+          titleMargin,
+          ExpandableRichText(
+            plainText, //assume this comes from backend
+            expandText: expandingText,
+            collapseText: collapsingText,
+            toggleTextStyle: linkTextStyle,
+          ),
+          verticalMargin,
+          mentionTextTitle,
+          titleMargin,
+          ExpandableRichText(
+            mentionText, //assume this comes from backend
+            expandText: expandingText,
+            collapseText: collapsingText,
+            toggleTextStyle: linkTextStyle,
+            mentionStyle: mentionTextStyle,
+          ),
+          verticalMargin,
+          hashtagTextTitle,
+          titleMargin,
+          ExpandableRichText(
+            hashTagText, //assume this comes from backend
+            expandText: expandingText,
+            collapseText: collapsingText,
+            toggleTextStyle: linkTextStyle,
+            hashtagStyle: hashTagTextStyle,
+          ),
+          verticalMargin,
+          urlTextTitle,
+          titleMargin,
+          ExpandableRichText(
+            urlText, //assume this comes from backend
+            expandText: expandingText,
+            collapseText: collapsingText,
+            toggleTextStyle: linkTextStyle,
+            urlStyle: urlTextStyle,
+          ),
+          verticalMargin,
+          customTagTitle,
+          titleMargin,
+          ExpandableRichText(
+            tagsText, //assume this comes from backend
+            expandText: expandingText,
+            collapseText: collapsingText,
+            toggleTextStyle: linkTextStyle,
+            customTagStyle: customTagStyle,
+          ),
+          verticalMargin,
+          multiCustomTagTitle,
+          titleMargin,
+          ExpandableRichText(
+            tagsText, //assume this comes from backend
+            expandText: expandingText,
+            collapseText: collapsingText,
+            toggleTextStyle: linkTextStyle,
+            customTagStyles: customTagStyleMap,
+          ),
+          verticalMargin,
+          allTextTitle,
+          titleMargin,
+          ExpandableRichText(
+            allText, //assume this comes from backend
+            expandText: expandingText,
+            collapseText: collapsingText,
+            toggleTextStyle: linkTextStyle,
+            mentionStyle: mentionTextStyle,
+            hashtagStyle: hashTagTextStyle,
+            customTagStyle: customTagStyle,
+          ),
+          verticalMargin,
+          programmaticallyHandleTitle,
+          titleMargin,
+          Align(
+            alignment: Alignment.topLeft,
+            child: ElevatedButton(
+                onPressed: () =>
+                    {programmaticExpandableRichText.toggle?.call()},
+                child: const Text("Toggle")),
+          ),
+          titleMargin,
+          programmaticExpandableRichText
+        ],
+      ),
     );
   }
 }

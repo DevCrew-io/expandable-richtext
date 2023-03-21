@@ -130,9 +130,13 @@ yet, [please open a new issue](https://github.com/DevCrew-io/expandable-richtext
 <a href=“https://www.instagram.com/devcrew.io” target=“blank”><img align=“center” src=“https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg” alt=“devcrew.io” height=“30” width=“40" /></a>
 <a href=“https://github.com/DevCrew-io” target=“blank”><img align=“center” src=“https://cdn-icons-png.flaticon.com/512/733/733553.png” alt=“DevCrew-io” height=“32" width=“32” /></a>
 </p>
+
 ## Contributing
+
 Contributions, issues, and feature requests are welcome!
+
 ## Show your Support
+
 Give a start if this project helped you.
 
 ## Copyright & License

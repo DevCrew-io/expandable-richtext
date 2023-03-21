@@ -5,16 +5,16 @@
 ![](https://img.shields.io/badge/Code-Dart-informational?style=flat&logo=dart&color=29B1EE)
 ![](https://img.shields.io/badge/Code-Flutter-informational?style=flat&logo=flutter&color=0C459C)
 
-A text widget which you can use to initially only show a defined number of lines of a probably long
-text. it also support clickable @‌mention, #hashtag and hyperlinks. You can define styles for
-@‌mention, #hashtag and hyperlinks, also apply custom style on segments of text.
+A text widget that you can use to initially only show a defined number of lines of a probably long
+text. It also supports clickable @‌mention, #hashtag, and hyperlinks. You can define styles for
+@‌mention, #hashtag, and hyperlinks and apply custom styles on text segments.
 
 ## Features
 
 - Collapse and Expand text
 - Configure text to show to Expand text (`expandText`) and to Collapse text (`collapseText`)
 - Control whether the ellipsis (`showEllipsis`) is part of the Expand/Collapse text
-- Expande and Collapse animation
+- Expand and Collapse animation
 - Callback for expanded changed event (`onExpandedChanged`)
 - Apply different style at @‌mention, #hashtag, hyperlinks and text segments
 - Handle click on @‌mention, #hashtag, hyperlinks and text segments
@@ -39,7 +39,7 @@ import 'package:expandable_rich_text/expandable_richtext.dart';
 
 ### Usage
 
-If `longText` exceeds one two:
+If `longText` exceeds two lines:
 
 ```dart
 Widget build(BuildContext context) {

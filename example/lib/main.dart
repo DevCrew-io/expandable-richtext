@@ -1,7 +1,7 @@
 import 'package:example/values/strings.dart';
 import 'package:example/values/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:expandable_rich_text/expandable_rich_text.dart';
+import 'package:expandable_richtext/expandable_rich_text.dart';
 
 void main() {
   runApp(const MyApp());

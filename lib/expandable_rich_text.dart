@@ -1,11 +1,11 @@
-library expandable_rich_text;
+library expandable_richtext;
 
 import 'dart:math';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:expandable_rich_text/text_parser.dart';
-import 'package:expandable_rich_text/text_segment.dart';
+import 'package:expandable_richtext/text_parser.dart';
+import 'package:expandable_richtext/text_segment.dart';
 
 typedef StringCallback = void Function(String value);
 

@@ -38,7 +38,7 @@ Widget build(BuildContext context) {
 
 ![collapse and expand](https://user-images.githubusercontent.com/85495993/226588912-9f6ffdea-c681-4c15-a895-321b7506dc40.png)
 
-Display text and apply custom style on `@mention` occurances:
+Display text and apply custom style on `@mention` occurrences:
 
 ```dart
 Widget build(BuildContext context) {
@@ -53,9 +53,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-![@mention occurances](https://user-images.githubusercontent.com/85495993/226590084-c7dac6b3-880d-40c0-8bfc-93233a7aab2f.png)
+![@mention occurrences](https://user-images.githubusercontent.com/85495993/226590084-c7dac6b3-880d-40c0-8bfc-93233a7aab2f.png)
 
-Display text and apply custom style on `#hashtag` occurances:
+Display text and apply custom style on `#hashtag` occurrences:
 
 ```dart
 Widget build(BuildContext context) {
@@ -70,9 +70,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-![#hashtag occurances](https://user-images.githubusercontent.com/85495993/226593183-072c2a69-34dd-42f3-bf9a-a876f9339c94.png)
+![#hashtag occurrences](https://user-images.githubusercontent.com/85495993/226593183-072c2a69-34dd-42f3-bf9a-a876f9339c94.png)
 
-Display text and apply custom style on `url` occurances:
+Display text and apply custom style on `url` occurrences:
 
 ```dart
 Widget build(BuildContext context) {
@@ -87,9 +87,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-![url occurances](https://user-images.githubusercontent.com/85495993/226593465-ea2806f4-f4d4-45e4-b45f-8b5cb2b886ba.png)
+![url occurrences](https://user-images.githubusercontent.com/85495993/226593465-ea2806f4-f4d4-45e4-b45f-8b5cb2b886ba.png)
 
-Display text and apply custom style on the occurances of `<tag>_some_text_</tag>`:
+Display text and apply custom style on the occurrences of `<tag>_some_text_</tag>`:
 
 ```dart
 Widget build(BuildContext context) {
@@ -108,10 +108,10 @@ Widget build(BuildContext context) {
 }
 ```
 
-![occurances of <tag>_
+![occurrences of <tag>_
 some_text_</tag>](https://user-images.githubusercontent.com/85495993/226593777-c74b0c28-c287-494e-8470-87d2a6216f59.png)
 
-Display text and apply custom style on the occurances of `<tag>_some_text_</tag>`
+Display text and apply custom style on the occurrences of `<tag>_some_text_</tag>`
 , `<tag2>_some_text_</tag2>`...`<tagN>_some_text_</tagN>`:
 
 ```dart
@@ -133,7 +133,7 @@ Widget build(BuildContext context) {
 
 ![Multiple Custom Tag](https://user-images.githubusercontent.com/85495993/226594498-a4b976f2-cdad-499c-b351-e1607a9e8ed6.png)
 
-Display text and apply custom style all togather on the occurances of all mention above:
+Display text and apply custom style all togather on the occurrences of all mention above:
 
 ```dart
 Widget build(BuildContext context) {
@@ -209,7 +209,7 @@ Contributions, issues, and feature requests are welcome!
 
 ## Show your Support
 
-Give a start if this project helped you.
+Give a star if this project helped you.
 
 ## Copyright & License
 

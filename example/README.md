@@ -14,7 +14,7 @@ Minimum usage of ExpandableRichText:
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       ;
   );
 }
@@ -28,7 +28,7 @@ text(`see more`/`see less`):
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
     expandText: 'show more',
     collapseText: 'show less',
     toggleTextStyle: const TextStyle(
@@ -43,7 +43,7 @@ Display text and apply custom style on `@mention` occurrences:
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-    "@Lorem Ipsum is simply dummy text of the printing and typesetting @industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an @unknown printer took a galley of type and scrambled it to make a type @specimen book.",
+    text: "@Lorem Ipsum is simply dummy text of the printing and typesetting @industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an @unknown printer took a galley of type and scrambled it to make a type @specimen book.",
     expandText: 'show more',
     collapseText: 'show less',
     toggleTextStyle: const TextStyle(
@@ -60,7 +60,7 @@ Display text and apply custom style on `#hashtag` occurrences:
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-    "#Lorem Ipsum is simply dummy text of the printing and #typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the #1500s, when an unknown printer took a galley of type and scrambled it to make a type #specimen book.",
+    text: "#Lorem Ipsum is simply dummy text of the printing and #typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the #1500s, when an unknown printer took a galley of type and scrambled it to make a type #specimen book.",
     expandText: 'show more',
     collapseText: 'show less',
     toggleTextStyle: const TextStyle(
@@ -77,7 +77,7 @@ Display text and apply custom style on `url` occurrences:
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-    "Lorem Ipsum is simply dummy text of the printing.com and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a www.galley.com of type and scrambled.com it to make a type specimen book.",
+    text: "Lorem Ipsum is simply dummy text of the printing.com and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a www.galley.com of type and scrambled.com it to make a type specimen book.",
     expandText: 'show more',
     collapseText: 'show less',
     toggleTextStyle: const TextStyle(
@@ -138,7 +138,7 @@ Display text and apply custom style all togather on the occurrences of all menti
 ```dart
 Widget build(BuildContext context) {
   return ExpandableRichText(
-    "Lorem ipsum dolor sit amet..., #consetetur @sadipscing elitr, <tag1>I am Admin1</tag1> tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <tag2>I am employee1</tag2> At vero eos et accusam et justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum www.galley.com dolor sit amet.",
+    text: "Lorem ipsum dolor sit amet..., #consetetur @sadipscing elitr, <tag1>I am Admin1</tag1> tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <tag2>I am employee1</tag2> At vero eos et accusam et justo duo dolores et ea rebum Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum www.galley.com dolor sit amet.",
     expandText: 'show more',
     collapseText: 'show less',
     toggleTextStyle: const TextStyle(
@@ -163,7 +163,7 @@ Programmatically handle text expand and collapse:
 ```dart
  /// a text to collapse and expand programmatically
 final expandableRichText = ExpandableRichText(
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+  text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
   expandText: expandingText,
   collapseText: collapsingText,);
 

@@ -6,8 +6,8 @@
 ![](https://img.shields.io/badge/Code-Flutter-informational?style=flat&logo=flutter&color=0C459C)
 
 A text widget that you can use to initially only show a defined number of lines of a probably long
-text. It also supports clickable @‌mention, #hashtag, and hyperlinks. You can define styles for
-@‌mention, #hashtag, and hyperlinks and apply custom styles on text segments.
+text. It also supports clickable @‌mention, #hashtag, and hyperlinks. You can define styles
+for `@‌mention`, `#hashtag`, and `hyperlinks` and apply `custom styles` on text segments.
 
 ## Features
 
@@ -28,7 +28,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  expandable_richtext: 1.0.0
+  expandable_richtext: 1.0.1
 ```
 
 Next, import the package into your dart code:
@@ -39,7 +39,7 @@ import 'package:expandable_rich_text/expandable_richtext.dart';
 
 ### Usage
 
-If `longText` exceeds two lines:
+If `text` exceeds two lines:
 
 ```dart
 Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-If `longText` have @‌mention, #hashtag, hyperlinks and text segments:
+If `text` have @‌mention, #hashtag, hyperlinks and text segments:
 
 ```dart
 Widget build(BuildContext context) {
@@ -145,7 +145,7 @@ Contributions, issues, and feature requests are welcome!
 
 ## Show your Support
 
-Give a start if this project helped you.
+Give a star if this project helped you.
 
 ## Copyright & License
 

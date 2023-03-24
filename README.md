@@ -1,6 +1,6 @@
 # Expandable RichText
 
-[![pub package](https://img.shields.io/pub/v/expandable_richtext.svg)](https://pub.dev/packages/expandable_rich_text)
+[![pub package](https://img.shields.io/pub/v/expandable_richtext.svg)](https://pub.dev/packages/expandable_richtext)
 [![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/DevCrew-io/expandable-richtext/blob/main/LICENSE)
 ![](https://img.shields.io/badge/Code-Dart-informational?style=flat&logo=dart&color=29B1EE)
 ![](https://img.shields.io/badge/Code-Flutter-informational?style=flat&logo=flutter&color=0C459C)

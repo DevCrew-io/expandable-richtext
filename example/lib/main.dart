@@ -1,5 +1,6 @@
 import 'package:example/values/strings.dart';
 import 'package:example/values/styles.dart';
+import 'package:expandable_richtext/expandable_richtext_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:expandable_richtext/expandable_rich_text.dart';
 
@@ -100,6 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
     /// a text to collapse and expand programmatically
     final programmaticExpandableRichText = ExpandableRichText(
       plainText,
+      controller: ExpandableRichTextController(),
       expandText: expandingText,
       collapseText: collapsingText,
     );
@@ -114,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           simpleTextTitle,
           titleMargin,
-          ExpandableRichText(
+          const ExpandableRichText(
             plainText, //assume this comes from backend
           ),
           verticalMargin,
@@ -195,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
             alignment: Alignment.topLeft,
             child: ElevatedButton(
                 onPressed: () =>
-                    {programmaticExpandableRichText.toggle?.call()},
+                    {programmaticExpandableRichText.controller?.toggleText()},
                 child: const Text("Toggle")),
           ),
           titleMargin,

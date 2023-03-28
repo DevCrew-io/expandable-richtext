@@ -12,7 +12,7 @@ List<TextSegment> parseText(String? text) {
       unicode: true);
   final matches = exp.allMatches(text);
   var start = 0;
-  matches.forEach((match) {
+  for (var match in matches) {
     // text before the keyword
     if (match.start > start) {
       if (segments.isNotEmpty && segments.last.isText) {
@@ -25,7 +25,6 @@ List<TextSegment> parseText(String? text) {
 
     final url = match.namedGroup('url');
     final keyword = match.namedGroup('keyword');
-    final tag = match.namedGroup('tag');
 
     if (url != null) {
       segments.add(TextSegment(url, url, false, false, false, null, true));
@@ -33,19 +32,18 @@ List<TextSegment> parseText(String? text) {
       final isWord = match.start == 0 ||
           [' ', '\n'].contains(text.substring(match.start - 1, start));
       if (!isWord) {
-        return;
+        continue;
       }
 
       final isHashtag = keyword.startsWith('#');
       final isMention = keyword.startsWith('@');
       final isTag = keyword.startsWith('<');
-      var subString;
+      late String subString;
       String? tagName;
       if (isTag) {
         final regexStart = RegExp(r"<\w+>");
         final regexEnd = RegExp(r"<\/*\w*>*");
         final regexTag = RegExp(r"[<>]");
-        final match = regexTag.firstMatch(keyword);
         tagName = keyword.replaceAll(regexTag, "");
         subString = keyword.replaceAll(regexStart, "");
         subString = subString.replaceAll(regexEnd, "");
@@ -57,7 +55,7 @@ List<TextSegment> parseText(String? text) {
     }
 
     start = match.end;
-  });
+  }
 
   // text after the last keyword or the whole text if it does not contain any keywords
   if (start < text.length) {

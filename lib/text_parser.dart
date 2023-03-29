@@ -12,54 +12,60 @@ List<TextSegment> parseText(String? text) {
       unicode: true);
   final matches = exp.allMatches(text);
   var start = 0;
-  matches.forEach((match) {
-    // text before the keyword
+  for (var match in matches) {
+    /// it means that there is some text before matched word e.g text = some text some text [matched word]
+    /// in simple words this block is adding text segment which is before @mention, #hashtag etc
     if (match.start > start) {
+      // add this text to [segments] e.g add "some text some text"
       if (segments.isNotEmpty && segments.last.isText) {
         segments.last.text += text.substring(start, match.start);
       } else {
         segments.add(TextSegment(text.substring(start, match.start)));
       }
+      // set the [start] to the point where match was found
       start = match.start;
     }
 
     final url = match.namedGroup('url');
     final keyword = match.namedGroup('keyword');
-    final tag = match.namedGroup('tag');
 
     if (url != null) {
       segments.add(TextSegment(url, url, false, false, false, null, true));
     } else if (keyword != null) {
+      // if there is ' ' or '\n' before keyword i.e is there is blank space or \n before @mention, #hashtag etc e.g " @mention", "\n @mention"
       final isWord = match.start == 0 ||
           [' ', '\n'].contains(text.substring(match.start - 1, start));
+      // if there is not ' ' or '\n' then continue the loop e.g in the case "sometext@mention"
       if (!isWord) {
-        return;
+        continue;
       }
 
       final isHashtag = keyword.startsWith('#');
       final isMention = keyword.startsWith('@');
       final isTag = keyword.startsWith('<');
-      var subString;
-      String? tagName;
+      late String keywordToDisplay; //@mention, #hashtag
+      String? tagName; // name of custom tag e.g tag1, tag2, admin
+      /// if keyword is custom tag e.g <tag>some text</tag>
+      /// extract 'tag' and remove <tag>, </tag> from keyword using regex
       if (isTag) {
-        final regexStart = RegExp(r"<\w+>");
-        final regexEnd = RegExp(r"<\/*\w*>*");
-        final regexTag = RegExp(r"[<>]");
-        final match = regexTag.firstMatch(keyword);
+        final regexTag = RegExp(r"[<>]"); // <>
+        final regexStartTag = RegExp(r"<\w+>"); // <tag>
+        final regexEndTag = RegExp(r"<\/*\w*>*"); //</tag>
         tagName = keyword.replaceAll(regexTag, "");
-        subString = keyword.replaceAll(regexStart, "");
-        subString = subString.replaceAll(regexEnd, "");
+        keywordToDisplay = keyword.replaceAll(regexStartTag, "");
+        keywordToDisplay = keywordToDisplay.replaceAll(regexEndTag, "");
       } else {
-        subString = keyword;
+        keywordToDisplay = keyword;
       }
-      segments.add(TextSegment(subString, keyword.substring(1), isHashtag,
-          isMention, isTag, tagName));
+      segments.add(TextSegment(keywordToDisplay, keyword.substring(1),
+          isHashtag, isMention, isTag, tagName));
     }
 
     start = match.end;
-  });
+  }
 
-  // text after the last keyword or the whole text if it does not contain any keywords
+  /// it means that there is some text after matched word e.g text = [matched word] some text some text
+  /// in simple words this block is adding text segment which is after @mention, #hashtag etc
   if (start < text.length) {
     if (segments.isNotEmpty && segments.last.isText) {
       segments.last.text += text.substring(start);

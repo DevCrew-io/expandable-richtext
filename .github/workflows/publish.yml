@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-      - tags:
-          - 'v[0-9]+.[0-9]+.[0-9]+'
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 # Publish using the reusable workflow from dart-lang.
 jobs:
@@ -32,6 +32,18 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
         working-directory: ${{ inputs.working-directory }}
+      - name: Setup credentials
+        run: |
+          mkdir -p ~/.pub-cache 
+          cat <<EOF > ~/.pub-cache/credentials.json
+          {
+            "accessToken":"${{ secrets.OAUTH_ACCESS_TOKEN }}",
+            "refreshToken":"${{ secrets.OAUTH_REFRESH_TOKEN }}",
+            "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
+            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+            "expiration": 1570721159347
+          }
+          EOF
       - name: Publish - dry run
         run: dart pub publish --dry-run
         working-directory: ${{ inputs.working-directory }}

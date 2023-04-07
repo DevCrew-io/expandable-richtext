@@ -2,10 +2,8 @@ name: Publish to pub.dev
 
 on:
   push:
-    branches:
-      - main
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+$'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 # Publish using the reusable workflow from dart-lang.
 jobs:
@@ -16,15 +14,16 @@ jobs:
     permissions:
       id-token: write # This is required for requesting the JWT
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/')
     steps:
       # Checkout repository
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
       # Setup Dart SDK with JWT token
-      - uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+      - name: Setup Dart SDK with JWT token
+        uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
       # Setup Flutter SDK
       - name: Install Flutter SDK
-      - uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@v2
         with:
           channel: 'stable' # or: 'beta', 'dev' or 'master'
 

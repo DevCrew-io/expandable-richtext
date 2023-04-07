@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v3
       # Setup Dart SDK with JWT token
       - name: Setup Dart SDK with JWT token
-        uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+        uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
       # Setup Flutter SDK
       - name: Install Flutter SDK
         uses: subosito/flutter-action@v2

@@ -168,7 +168,7 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
       children: [
         if (!_expanded)
           TextSpan(
-            text: '\u2026 ',
+            text: widget.showEllipsis ? '\u2026 ' : '',
             style: widget.showEllipsis ? linkTextStyle : effectiveTextStyle,
             recognizer:
                 widget.showEllipsis ? _toggleTextGestureRecognizer : null,

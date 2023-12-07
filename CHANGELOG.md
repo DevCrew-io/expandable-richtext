@@ -1,3 +1,7 @@
+## 1.0.4
+
+Max lines, is not consistent [#26](https://github.com/DevCrew-io/expandable-richtext/issues/26)
+
 ## 1.0.3
 
 Automate package publishing

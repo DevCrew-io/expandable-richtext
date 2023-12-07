@@ -28,7 +28,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  expandable_richtext: 1.0.3
+  expandable_richtext: 1.0.4
 ```
 
 Next, import the package into your dart code:

@@ -1,6 +1,6 @@
 name: expandable_richtext
 description: A text widget which you can use to initially only show a defined number of lines of a probably long text. it also support clickable @‌mention, #hashtag and hyperlinks and custom tags for styling.
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/DevCrew-io/expandable-richtext#readme
 repository: https://github.com/DevCrew-io/expandable-richtext
 issue_tracker: https://github.com/DevCrew-io/expandable-richtext/issues

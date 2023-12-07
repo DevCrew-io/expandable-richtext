@@ -1,4 +1,4 @@
-## 1.0.4
+## 1.0.5
 
 Max lines, is not consistent [#26](https://github.com/DevCrew-io/expandable-richtext/issues/26)
 

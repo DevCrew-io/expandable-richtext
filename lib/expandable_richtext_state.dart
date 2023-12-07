@@ -21,8 +21,7 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
     super.initState();
     widget.controller?.setState(this);
     _expanded = widget.expanded;
-    _toggleTextGestureRecognizer = TapGestureRecognizer()
-      ..onTap = _onTapToggleText;
+    _toggleTextGestureRecognizer = TapGestureRecognizer()..onTap = _onTapToggleText;
     _updateText();
   }
 
@@ -38,17 +37,13 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
       final toggleTextSpan = _toggleTextSpan();
       final contentTextSpan = _contentTextSpan();
 
-      Widget expandableRichText = LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
+      Widget expandableRichText = LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
         assert(constraints.hasBoundedWidth);
         final double maxWidth = constraints.maxWidth;
 
-        final textAlign =
-            widget.textAlign ?? defaultTextStyle.textAlign ?? TextAlign.start;
-        final textDirection =
-            widget.textDirection ?? Directionality.of(context);
-        final textScaleFactor =
-            widget.textScaleFactor ?? MediaQuery.textScaleFactorOf(context);
+        final textAlign = widget.textAlign ?? defaultTextStyle.textAlign ?? TextAlign.start;
+        final textDirection = widget.textDirection ?? Directionality.of(context);
+        final textScaleFactor = widget.textScaleFactor ?? MediaQuery.textScaleFactorOf(context);
         final locale = Localizations.maybeLocaleOf(context);
 
         TextPainter textPainter = TextPainter(
@@ -60,7 +55,8 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
           locale: locale,
         );
         textPainter.layout(minWidth: constraints.minWidth, maxWidth: maxWidth);
-        final toggleTextSize = textPainter.size;
+        final toggleTextSize = textPainter
+            .size; // toggleTextSize is giving full screen width instead of with of toggle text. That's why not using it and assuming with 60
 
         textPainter.text = contentTextSpan;
         textPainter.layout(minWidth: constraints.minWidth, maxWidth: maxWidth);
@@ -68,22 +64,21 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
 
         TextSpan textSpan;
         if (textPainter.didExceedMaxLines) {
-          final position = textPainter.getPositionForOffset(Offset(
-            contentTextSize.width - toggleTextSize.width,
-            contentTextSize.height,
-          ));
+          final position = textPainter.getPositionForOffset(
+            Offset(
+              contentTextSize.width - 60,
+              contentTextSize.height,
+            ),
+          );
           final endOffset = (textPainter.getOffsetBefore(position.offset) ?? 0);
-          final recognizer =
-              (_expanded ? widget.collapseOnTextTap : widget.expandOnTextTap)
-                  ? _toggleTextGestureRecognizer
-                  : null;
+          final recognizer = (_expanded ? widget.collapseOnTextTap : widget.expandOnTextTap)
+              ? _toggleTextGestureRecognizer
+              : null;
           final text = _expanded
               ? contentTextSpan
               : TextSpan(
-                  children: _buildTextSpans(
-                      parseText(widget.text.substring(0, max(endOffset, 0))),
-                      effectiveTextStyle,
-                      recognizer));
+                  children: _buildTextSpans(parseText(widget.text.substring(0, max(endOffset, 0))),
+                      effectiveTextStyle, recognizer));
           textSpan = TextSpan(
             style: effectiveTextStyle,
             children: <TextSpan>[
@@ -105,8 +100,7 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
 
         if (widget.animation) {
           return AnimatedSize(
-            duration:
-                widget.animationDuration ?? const Duration(milliseconds: 200),
+            duration: widget.animationDuration ?? const Duration(milliseconds: 200),
             curve: widget.animationCurve ?? Curves.fastLinearToSlowEaseIn,
             alignment: Alignment.topLeft,
             child: richText,
@@ -160,8 +154,7 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
 
   /// get span for toggle text used for expand and collapse
   TextSpan _toggleTextSpan() {
-    final linkText =
-        (_expanded ? widget.collapseText : widget.expandText) ?? '';
+    final linkText = (_expanded ? widget.collapseText : widget.expandText) ?? '';
     final linkTextStyle = effectiveTextStyle.merge(widget.toggleTextStyle);
 
     return TextSpan(
@@ -170,8 +163,7 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
           TextSpan(
             text: widget.showEllipsis ? '\u2026 ' : '',
             style: widget.showEllipsis ? linkTextStyle : effectiveTextStyle,
-            recognizer:
-                widget.showEllipsis ? _toggleTextGestureRecognizer : null,
+            recognizer: widget.showEllipsis ? _toggleTextGestureRecognizer : null,
           ),
         if (linkText.isNotEmpty)
           TextSpan(
@@ -197,13 +189,12 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
   /// else apply style for each text segment
   TextSpan _contentTextSpan() {
     return _textSegments.isNotEmpty
-        ? TextSpan(
-            children: _buildTextSpans(_textSegments, effectiveTextStyle, null))
+        ? TextSpan(children: _buildTextSpans(_textSegments, effectiveTextStyle, null))
         : TextSpan(text: widget.text);
   }
 
-  List<TextSpan> _buildTextSpans(List<TextSegment> segments,
-      TextStyle textStyle, TapGestureRecognizer? textTapRecognizer) {
+  List<TextSpan> _buildTextSpans(
+      List<TextSegment> segments, TextStyle textStyle, TapGestureRecognizer? textTapRecognizer) {
     final spans = <TextSpan>[];
     var index = 0;
     for (var segment in segments) {

@@ -7,7 +7,7 @@ issue_tracker: https://github.com/DevCrew-io/expandable-richtext/issues
 documentation: https://github.com/DevCrew-io/expandable-richtext/blob/main/example/README.md
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=2.18.4 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:

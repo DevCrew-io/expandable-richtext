@@ -47,18 +47,14 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
         final locale = Localizations.maybeLocaleOf(context);
 
         TextPainter textPainter = TextPainter(
-          text: toggleTextSpan,
+          text: contentTextSpan,
           textAlign: textAlign,
           textDirection: textDirection,
           textScaleFactor: textScaleFactor,
           maxLines: widget.maxLines,
           locale: locale,
         );
-        textPainter.layout(minWidth: constraints.minWidth, maxWidth: maxWidth);
-        final toggleTextSize = textPainter
-            .size; // toggleTextSize is giving full screen width instead of with of toggle text. That's why not using it and assuming with 60
 
-        textPainter.text = contentTextSpan;
         textPainter.layout(minWidth: constraints.minWidth, maxWidth: maxWidth);
         final contentTextSize = textPainter.size;
 

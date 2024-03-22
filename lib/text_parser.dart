@@ -1,4 +1,5 @@
 import 'package:expandable_richtext/text_segment.dart';
+import 'package:flutter/cupertino.dart';
 
 List<TextSegment> parseText(String? text) {
   final segments = <TextSegment>[];
@@ -48,10 +49,13 @@ List<TextSegment> parseText(String? text) {
       /// if keyword is custom tag e.g <tag>some text</tag>
       /// extract 'tag' and remove <tag>, </tag> from keyword using regex
       if (isTag) {
-        final regexTag = RegExp(r"[<>]"); // <>
+        final regexTag = RegExp(r"<[^>]+>"); // <>
+        final regexRemoveTag = RegExp(r"[<>]"); // <>
         final regexStartTag = RegExp(r"<\w+>"); // <tag>
         final regexEndTag = RegExp(r"<\/*\w*>*"); //</tag>
-        tagName = keyword.replaceAll(regexTag, "");
+        tagName = regexTag.firstMatch(keyword)?.group(0);
+        tagName = tagName?.replaceAll(regexRemoveTag, "");
+        debugPrint("tagName: $tagName");
         keywordToDisplay = keyword.replaceAll(regexStartTag, "");
         keywordToDisplay = keywordToDisplay.replaceAll(regexEndTag, "");
       } else {

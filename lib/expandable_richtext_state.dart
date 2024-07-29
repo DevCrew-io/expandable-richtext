@@ -43,7 +43,6 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
 
         final textAlign = widget.textAlign ?? defaultTextStyle.textAlign ?? TextAlign.start;
         final textDirection = widget.textDirection ?? Directionality.of(context);
-        final textScaleFactor = widget.textScaleFactor ?? MediaQuery.textScaleFactorOf(context);
         final textScaler = widget.textScaler ?? MediaQuery.textScalerOf(context);
         final locale = Localizations.maybeLocaleOf(context);
 
@@ -51,7 +50,6 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
           text: contentTextSpan,
           textAlign: textAlign,
           textDirection: textDirection,
-          textScaleFactor: textScaleFactor,
           textScaler: textScaler,
           maxLines: widget.maxLines,
           locale: locale,
@@ -92,7 +90,6 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
           softWrap: true,
           textDirection: textDirection,
           textAlign: textAlign,
-          textScaleFactor: textScaleFactor,
           textScaler: textScaler,
           overflow: TextOverflow.clip,
         );

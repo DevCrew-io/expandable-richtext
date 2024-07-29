@@ -1,3 +1,7 @@
+## 1.0.7
+
+Support the textScaler parameter [#34](https://github.com/DevCrew-io/expandable-richtext/issues/34)
+
 ## 1.0.6
 
 fix customTagStyles not working [#31](https://github.com/DevCrew-io/expandable-richtext/issues/31)

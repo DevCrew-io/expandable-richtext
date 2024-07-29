@@ -44,6 +44,7 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
         final textAlign = widget.textAlign ?? defaultTextStyle.textAlign ?? TextAlign.start;
         final textDirection = widget.textDirection ?? Directionality.of(context);
         final textScaleFactor = widget.textScaleFactor ?? MediaQuery.textScaleFactorOf(context);
+        final textScaler = widget.textScaler ?? MediaQuery.textScalerOf(context);
         final locale = Localizations.maybeLocaleOf(context);
 
         TextPainter textPainter = TextPainter(
@@ -51,6 +52,7 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
           textAlign: textAlign,
           textDirection: textDirection,
           textScaleFactor: textScaleFactor,
+          textScaler: textScaler,
           maxLines: widget.maxLines,
           locale: locale,
         );
@@ -91,6 +93,7 @@ class ExpandableRichTextState extends State<ExpandableRichText> {
           textDirection: textDirection,
           textAlign: textAlign,
           textScaleFactor: textScaleFactor,
+          textScaler: textScaler,
           overflow: TextOverflow.clip,
         );
 

@@ -33,7 +33,13 @@ class ExpandableRichText extends StatefulWidget {
     this.style,
     this.textDirection,
     this.textAlign,
+    @Deprecated(
+      'Use textScaler instead. '
+      'Use of textScaleFactor was deprecated in preparation for the upcoming nonlinear text scaling support. '
+      'This feature was deprecated after v3.12.0-2.0.pre.',
+    )
     this.textScaleFactor,
+    this.textScaler,
     this.maxLines = 2,
     this.animation = false,
     this.animationDuration,
@@ -87,7 +93,13 @@ class ExpandableRichText extends StatefulWidget {
   final TextStyle? style;
   final TextDirection? textDirection;
   final TextAlign? textAlign;
+  @Deprecated(
+    'Use textScaler instead. '
+        'Use of textScaleFactor was deprecated in preparation for the upcoming nonlinear text scaling support. '
+        'This feature was deprecated after v3.12.0-2.0.pre.',
+  )
   final double? textScaleFactor;
+  final TextScaler? textScaler;
   final int maxLines;
 
   /// expand and collapse animation
